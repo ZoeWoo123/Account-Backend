@@ -11,6 +11,17 @@ public class User {
 	private String Birthday;
 	private String Gender;
 	
+	
+	public User() {
+		
+	}
+	public User(String e, String p, String n, String b, String g) {
+		this.Email = e;
+		this.Password = p;
+		this.Name = n;
+		this.Birthday = b;
+		this.Gender = g;
+	}
 	public String getEmail() {
 		return Email;
 	}
