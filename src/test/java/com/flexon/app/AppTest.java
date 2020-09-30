@@ -1,6 +1,6 @@
 package com.flexon.app;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 
@@ -22,58 +22,49 @@ public class AppTest
     
     @Test
     public void tryEmail() {
-    	try{
-    		User user = new User();
-    		user.setEmail("123456");
-    	}catch(MyException ex){
-    		System.out.println(ex.getMessage());
-    	}
+    	User user = new User();
+    	boolean ret = user.setEmail("1234@gmail.com");
+    	assertEquals(ret, true);
     }
     
     @Test
-    public void tryName() {
-    	try {
-    		User user = new User();
-    		user.setName("**");
-    	}catch(MyException ex) {
-    		System.out.println(ex.getMessage());
-    	}
+    public void tryFirstName() {
+    	User user = new User();
+    	boolean ret = user.setFirstName("");
+    	assertEquals(ret, false);
     }
     
     @Test
-    public void tryBirthday() {
-    	try {
-    		User user = new User();
-    		String testDate = "2020-09-24";
-    		user.setBirthday(testDate);
-    	}catch(MyException ex) {
-    		System.out.println(ex.getMessage());
-    	}
+    public void tryLastName() {
+    	User user = new User();
+    	boolean ret = user.setLastName("Wu");
+    	assertEquals(ret, true);
     }
     
     @Test
     public void tryPassword() {
-    	try {
-    		User user = new User();
-
-    		user.setPassword("123456");
-    	}catch(MyException ex) {
-    		System.out.println(ex.getMessage());
-    	}
+    	User user = new User();
+    	boolean ret = user.setPassword("123456");
+    	assertEquals(ret, false);
+    }
+    
+    @Test
+    public void tryPhoneNum() {
+    	User user = new User();
+    	boolean ret = user.setPhoneNum(1111111111);
+    	assertEquals(ret, true);
+    	int num = user.getPhoneNum();
+    	assertEquals(num, 1111111111);
     }
     
     @Test
     public void tryDao() {
 		UserDao tryDao = new UserDao();
-		User user1 = new User("123@gmail.com", "1qaz@WSX", "Woo663", "1996-06-01","Female");
+		User user1 = new User("123@gmail.com", "1qaz@WSX", "Peter", "Wu",1111111111);
 		assertTrue(tryDao.addUser(user1));
 		tryDao.printUser();
-		try {
-			tryDao.updateUser(user1, "Password", "2wsx#EDC");
-			System.out.println("Update Done");
-		}catch(MyException ex) {
-			System.out.println(ex.getMessage());
-		}
+		assertTrue(tryDao.updateUser(user1, "Password", "2wsx#EDC"));
+		
 		try {
 			tryDao.removeUser(user1);
 			System.out.println("Remove Done");
