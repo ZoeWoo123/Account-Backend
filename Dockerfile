@@ -1,0 +1,10 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD 123456
+ENV MYSQL_DATABASE hello_java
+ENV MYSQL_USER woo
+ENV MYSQL_PASSWORD 123456
+
+ADD setup.sql /docker-entrypoint-initdb.d
+
+EXPOSE 8080
