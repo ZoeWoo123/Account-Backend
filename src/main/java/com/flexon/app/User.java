@@ -8,14 +8,14 @@ public class User {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private int phoneNum;
+	private String phoneNum;
 	private String emailAdd;
 	private String password;
 	
 	public User() {
 		
 	}
-	public User(String e, String p, String fn, String ln, int pn) {
+	public User(String e, String p, String fn, String ln, String pn) {
 		this.id = -1;
 		this.emailAdd = e;
 		this.password = p;
@@ -52,7 +52,7 @@ public class User {
 		return password;
 	}
 	public boolean setPassword (String password){
-		if(!password.matches("((?=.*[a-z])(?=.*d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})")){
+		if(password.length() < 6){
 			return false;
 		}
 		this.password = password;
@@ -81,11 +81,11 @@ public class User {
 		return false;
 	}
 	
-	public int getPhoneNum() {
+	public String getPhoneNum() {
 		return this.phoneNum;
 	}
-	public boolean setPhoneNum(int num) {
-		if(String.valueOf(num).length() != 10){
+	public boolean setPhoneNum(String num) {
+		if(num == null || num.length() != 10){
 			return false;
 		}
 		this.phoneNum = num;

@@ -15,22 +15,13 @@ public class dbTest {
 		Statement state = null;
 		try {
 			conn = DriverManager.getConnection(CONN_STRING+
-				                                   "user=root&password=123456");
+				                                   "user=woo&password=123456");
 			System.out.println("DB Connected");
 			
-//			String query = "create table user(" + 
-//					"   id INT NOT NULL AUTO_INCREMENT," + 
-//					"   firstName VARCHAR(250)," + 
-//					"   lastName VARCHAR(250)," + 
-//					"   phoneNum INT, " + 
-//					"   emailAdd VARCHAR(250), " + 
-//					"   password VARCHAR(250), " + 
-//					"   PRIMARY KEY (id )" + 
-//					");";
 			
 			String query = "insert into user" + 
 					" (firstName, lastName, phoneNum, emailAdd, password) " +
-					" values('Peter', 'Pan', 1111111111, '12345@gmail.com','1qaz@WSX');"; 
+					" values('Alice', 'Wang', '2222222222', '67891@gmail.com','2wsx#EDC');"; 
 					
 			state = conn.createStatement();
 			state.execute(query);

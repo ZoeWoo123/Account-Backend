@@ -54,7 +54,7 @@ public class accountUI {
 	public static void testPhoneNum() {
 		Scanner myObj4 = new Scanner(System.in);
 		System.out.println("Please input your phone number:");
-		int phoneNum = myObj4.nextInt();
+		String phoneNum = myObj4.nextLine();
 		if (user.setPhoneNum(phoneNum)) {
 			System.out.println("PhoneNum Done");
 		} else{

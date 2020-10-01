@@ -45,33 +45,26 @@ public class AppTest
     public void tryPassword() {
     	User user = new User();
     	boolean ret = user.setPassword("123456");
-    	assertEquals(ret, false);
+    	assertEquals(ret, true);
     }
     
     @Test
     public void tryPhoneNum() {
     	User user = new User();
-    	boolean ret = user.setPhoneNum(1111111111);
+    	boolean ret = user.setPhoneNum("1111111111");
     	assertEquals(ret, true);
-    	int num = user.getPhoneNum();
-    	assertEquals(num, 1111111111);
+    	String num = user.getPhoneNum();
+    	assertEquals(num, "1111111111");
     }
     
     @Test
     public void tryDao() {
 		UserDao tryDao = new UserDao();
-		User user1 = new User("123@gmail.com", "1qaz@WSX", "Peter", "Wu",1111111111);
-		assertTrue(tryDao.addUser(user1));
+		User user1 = new User("123@gmail.com", "1qaz@WSX", "Zoe", "Wu","2023334444");
+		tryDao.addUser(user1);
 		tryDao.printUser();
-		assertTrue(tryDao.updateUser(user1, "Password", "2wsx#EDC"));
-		
-		try {
-			tryDao.removeUser(user1);
-			System.out.println("Remove Done");
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
-		}
-		
-		
+		tryDao.updateUser("lastName", "Potter", "firstName", "Kevin");
+		tryDao.removeUser("firstName","Zoe");
+		tryDao.printUser();
     }
 }
